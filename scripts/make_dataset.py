@@ -36,7 +36,7 @@ class MakeDataset():
         with open(self.dataset_dir + self.tag + '.txt', 'a') as f:
             for data in data_array_:
                 f.write(f'{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}\n')
-                print(f'Written! {data[0]}\t{data[1]}\t{data[2]}\t{data[3]}\n')
+            print(f'Written! frame: {data[0]}')
 
 def main():
     node = MakeDataset()
