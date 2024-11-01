@@ -17,9 +17,9 @@ class MakeDataset():
             PedestrianArray,
             self.curr_ped_callback)
 
-        if not rospy.has_param('tag'):
-            rospy.set_param('tag', 'hoge')
-        self.tag = rospy.get_param('tag')
+        if not rospy.has_param('~tag'):
+            rospy.set_param('~tag', 'hoge')
+        self.tag = rospy.get_param('~tag')
 
         self.pkg_path = roslib.packages.get_pkg_dir('ptp_make_dataset')
 
