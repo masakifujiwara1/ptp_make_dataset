@@ -23,17 +23,17 @@ class MakeDataset():
 
         self.pkg_path = roslib.packages.get_pkg_dir('ptp_make_dataset')
 
-        dataset_dir = self.pkg_path + '/datasets/' 
+        self.dataset_dir = self.pkg_path + '/datasets/' 
 
-        if not os.path.exists(dataset_dir):
-            os.makedirs(dataset_dir)
+        if not os.path.exists(self.dataset_dir):
+            os.makedirs(self.dataset_dir)
         
     def curr_ped_callback(self, msg):
         data_array = np.array(msg.data, dtype=np.dtype(msg.dtype)).reshape(msg.shape)
         self.add_data(data_array)
 
     def add_data(self, data_array_):
-        with open(dataset_dir + self.tag + '.txt', 'a') as f:
+        with open(self.dataset_dir + self.tag + '.txt', 'a') as f:
             for data in data_array_:
                 f.write(f'{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}\n')
 
