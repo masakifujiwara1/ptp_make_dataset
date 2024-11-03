@@ -21,9 +21,13 @@ class MakeDataset():
             rospy.set_param('~tag', 'hoge')
         self.tag = rospy.get_param('~tag')
 
+        if not rospy.has_param('~group'):
+            rospy.set_param('~group', 'hoge')
+        self.group = rospy.get_param('~group')
+
         self.pkg_path = roslib.packages.get_pkg_dir('ptp_make_dataset')
 
-        self.dataset_dir = self.pkg_path + '/datasets/' 
+        self.dataset_dir = self.pkg_path + '/datasets/' + self.group + '/'
 
         if not os.path.exists(self.dataset_dir):
             os.makedirs(self.dataset_dir)
