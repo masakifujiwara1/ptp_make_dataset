@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="output" default="screen"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="upper_velodyne_transform" output="screen" args="0 0 0.8 0 0 0 base_link upper_velodyne_frame" />
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+       <remap from="cloud_in" to="upper_velodyne/velodyne_points"/>
+       <remap from="scan" to="rfans/surestar_scan"/>
+       <!-- <param name="target_frame" value="base_link"/> -->
+       <param name="max_height" value="5.0"/>
+       <param name="min_height" value="0.0"/>
+       <param name="range_max" value="50.0"/>
+       <param name="range_min" value="0.0"/>
+       <param name="angle_increment" value="0.0035"/>
+    </node>
+    <include file="$(find theta_simple_stitching)/launch/simple_stitching.launch"/>
+    <include file="$(find yolov9_bringup)/launch/yolov9_theta.launch"/>
+</launch>
