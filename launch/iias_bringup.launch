@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="output" default="screen"/>
+    <include file="$(find theta_simple_stitching)/launch/simple_stitching.launch"/>
+    <include file="$(find yolov9_bringup)/launch/yolov9_theta.launch"/>
+</launch>
